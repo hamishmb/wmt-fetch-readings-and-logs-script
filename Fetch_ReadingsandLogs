@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# This script fetches all the Results and Logs and creates a zip file with them in
+
+cd ~
+
+if [ ! -d "/home/$USER/ReadingsandLogs/" ]; then
+mkdir ReadingsandLogs
+fi
+
+cd rivercontrolsystem/readings/
+
+mv * /home/$USER/ReadingsandLogs/
+
+cd ../logs
+
+mv * /home/$USER/ReadingsandLogs/
+
+cd ~
+
+zip ReadingsandLogs.zip ReadingsandLogs/*
+
+mv ReadingsandLogs.zip $(date '+%Y-%b-%d')_$(uname -n)_readingsandlogs.zip
+
+rm ReadingsandLogs/*
+

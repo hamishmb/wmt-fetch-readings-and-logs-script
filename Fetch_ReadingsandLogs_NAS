@@ -1,0 +1,23 @@
+#!/bin/ash
+
+# This script fetches all the Logs and creates a zip file with them in.
+# Adapted for NAS box by Hamish McIntyre-Bhatty
+
+cd /mnt/HD/HD_a2
+
+if [ ! -d "/mnt/HD/HD_a2/ReadingsandLogs/" ]; then
+mkdir ReadingsandLogs
+fi
+
+cd rivercontrolsystem/logs
+
+mv * /mnt/HD/HD_a2/ReadingsandLogs/
+
+cd /mnt/HD/HD_a2
+
+zip ReadingsandLogs.zip ReadingsandLogs/*
+
+mv ReadingsandLogs.zip $(date '+%Y-%b-%d')_$(uname -n)_readingsandlogs.zip
+
+rm ReadingsandLogs/*
+
